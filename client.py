@@ -65,7 +65,7 @@ def send_data(self=None):
 '''UI'''  
 
 def open_link():
-    webbrowser.open_new_tab("https://github.com/")    
+    webbrowser.open_new_tab("https://github.com/Lobsterge/Python-GUI-chat/tree/main")    
 
 def scroll_up(self=None):
     output.yview_scroll(-1, "units")
