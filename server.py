@@ -8,6 +8,7 @@ logging=False # stampa chatlog su file
 debug=False # stampa chatlog su terminale
 host="localhost"
 port=4444    
+MAX_CONNECTIONS=3
 
 if logging:
     path="log_"+str(datetime.now())[:-7]+".txt"
@@ -16,8 +17,11 @@ if logging:
     
 logged_usernames=[]
 users={}
+logged_users=0
 
 def client_handler(connection, address):
+    global logged_users
+    logged_users+=1
     welcome_message=">Seleziona un username per iniziare a comunicare (massimo 20 caratteri):\n"
     connection.sendall(welcome_message.encode())
     username=connection.recv(1024).rstrip().decode()
@@ -87,12 +91,16 @@ def client_handler(connection, address):
             log=open(path, "a")
             print(time+' Disconnected from:', address[1:-1], file=log)
             log.close()
-
+        logged_users-=1
         connection.close()
         users.pop(username)
 
 def accept_connection(socket):
     client, address = socket.accept()
+    if logged_users>MAX_CONNECTIONS:
+        client.sendall(">Troppe connessioni\n".encode())
+        client.close()
+        return 
 
     address="("+address[0]+":"+str(address[1])+")"
     time="["+datetime.now().strftime("%H:%M")+"]"
@@ -109,7 +117,7 @@ def accept_connection(socket):
 
 socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 socket.bind((host,port))
-socket.listen(30)
+socket.listen(MAX_CONNECTIONS)
 
 
 while True:

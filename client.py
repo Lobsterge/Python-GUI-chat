@@ -46,7 +46,7 @@ def server_handler(connection, startup):
         connection.close()
         status.config(text="Non connesso", fg="red")
         output.configure(state ='normal')
-        output.insert("end", ">Il server è stato spento, vai a picchiare chiunque lo stava hostando\n")
+        output.insert("end", ">Il server non è raggiungibile\n")
         global check
         check=False
         output.configure(state ='disabled')
