@@ -14,8 +14,10 @@ def startup():
         showinfo("Errore", "Sei già connesso")
         return
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    host="localhost"
-    port=4444
+
+    host="localhost" #modifica questi
+    port=4444 #modifica questi
+
     try:
         s.connect((host,port))
     except:

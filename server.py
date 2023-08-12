@@ -6,6 +6,8 @@ from datetime import datetime
 
 logging=False # stampa chatlog su file
 debug=False # stampa chatlog su terminale
+host="localhost"
+port=4444    
 
 if logging:
     path="log_"+str(datetime.now())[:-7]+".txt"
@@ -106,10 +108,6 @@ def accept_connection(socket):
 
 
 socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-
-host="localhost"
-port=4444    
-
 socket.bind((host,port))
 socket.listen(30)
 
