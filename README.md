@@ -1,6 +1,6 @@
 # Python-GUI-chat
 ## Cosa?
-Una semplice applicazione per creare una chatroom su una rete locale tramite socket, usando la libreria [Tkinter](https://docs.python.org/3/library/tkinter.html) per la grafica. 
+Una semplice applicazione per creare una chatroom su rete locale, tramite socket e usando la libreria [Tkinter](https://docs.python.org/3/library/tkinter.html) per la grafica. 
 ## Come?
 #### Server:
   - Modificare host/port (defaults: localhost/4444)
@@ -11,6 +11,6 @@ Una semplice applicazione per creare una chatroom su una rete locale tramite soc
   - Connettersi al server
   
   ![screenshot](images/pic1.png)
+
 ## Perché?
 Perché no
-
