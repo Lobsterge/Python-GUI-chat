@@ -91,11 +91,16 @@ def set_values(self=None):
     options.destroy()
 
 def configuration(self=None):
+    global check
     global host
     global port 
     global host_local
     global port_local
     global options
+
+    if check:
+        showinfo("Errore", "Non puoi cambiare configurazione mentre sei connesso")
+        return 
 
     host_local=tk.StringVar(value=host)
     port_local=tk.StringVar(value=str(port))
