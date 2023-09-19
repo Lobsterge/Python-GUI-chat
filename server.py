@@ -8,7 +8,7 @@ logging=False # stampa chatlog su file
 debug=False # stampa chatlog su terminale
 host="localhost"
 port=4444    
-MAX_CONNECTIONS=3
+MAX_CONNECTIONS=30
 
 if logging:
     path="log_"+str(datetime.now())[:-7]+".txt"
